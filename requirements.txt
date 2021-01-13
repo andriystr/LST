@@ -1,0 +1,3 @@
+monapy>=0.4.0
+requests
+bs4
