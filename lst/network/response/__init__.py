@@ -47,3 +47,7 @@ class Response:
     def follow(self, url, **kwargs):
         return fetch(self.urljoin(url), **kwargs)
 
+
+def create_response(url, stream, cont_type, request, **kwargs):
+    pass
+    #TODO
