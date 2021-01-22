@@ -29,3 +29,30 @@ def fetch(url, **kwargs):
             'unknown url type: %s' % scheme
         )
 
+
+class Request:
+    def __init__(self, url, **kwargs):
+        self.url = url
+        self._args = kwargs
+
+    def __getattr__(self, name):
+        if name in self._args:
+            return self._args[name]
+        else:
+            raise AttributeError(
+                '\'%s\' object has no attribute \'%s\'' % (
+                    type(self).__name__,
+                    name
+                )
+            )
+
+    def __setattr__(self, name, value):
+        if name in self._args:
+            return self._args[name] = value
+        else:
+            raise AttributeError(
+                '\'%s\' object has no attribute \'%s\'' % (
+                    type(self).__name__,
+                    name
+                )
+            )
